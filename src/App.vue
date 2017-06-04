@@ -41,11 +41,6 @@ export default {
   name: 'app',
   firebase: {
     contacts: contactsRef
-  },
-  data() {
-    newContact {
-      
-    }
   }
 }
 </script>
