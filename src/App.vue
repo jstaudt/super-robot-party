@@ -1,58 +1,29 @@
 <template>
-  <div id="app" class="container">
-    <div class="page-header">
-      <h1>SRP</h1>
+    <div class="container">
+        <div class="row">
+            <div>
+                <h1 class="srpBanner">SRP</h1>
+                <app-header></app-header>
+                <router-view></router-view>
+            </div>
+        </div>
     </div>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/275863914&amp;auto_play=true&&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
-      </div>
-      <!-- <div class="panel-body">
-        <img src="../srp.jpg" alt="Smiley face">
-      </div>
-      <div class="panel-body">
-        <img src="../yellow.jpg" alt="Smiley face">
-      </div> -->
-      <div class="panel-body">
-        <img src="../spaceman.jpg" class="img-fluid pic" alt="Responsive image">
-      </div>
-    </div>
-    <!-- <img src="./assets/logo.png"> -->
-    <!-- <router-view></router-view> -->
-  </div>
 </template>
 
 <script>
-// var SC = require('soundcloud');
-
-// SC.initialize({
-//   client_id: 'YOUR_CLIENT_ID',
-// });
-
-import Firebase from 'firebase'
-let config = {
-  apiKey: "AIzaSyB3f2NaIWLmStW14gtZ5daqu7q-NEwwrSw",
-  authDomain: "superrobotparty-3b4af.firebaseapp.com",
-  databaseURL: "https://superrobotparty-3b4af.firebaseio.com",
-  projectId: "superrobotparty-3b4af",
-  storageBucket: "superrobotparty-3b4af.appspot.com",
-  messagingSenderId: "124706582401"
-}
-
-let app = Firebase.initializeApp(config);
-let db = app.database();
-let contactsRef = db.ref('contacts');
-
-export default {
-  name: 'app',
-  firebase: {
-    contacts: contactsRef
-  }
-}
+    import Header from './components/header.vue';
+    export default {
+        components: {
+            appHeader: Header
+        }
+    }
 </script>
 
 <style>
-#app {
+body {
+    width: 100%;
+}
+.srpBanner {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,8 +31,35 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 .pic {
   max-width: 100%;
+}
+
+#landing {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 0px;
+  padding-left: 0px
+}
+
+.v-enter, .v-leave-active {
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top-width: 0;
+  border-bottom-width: 0;
+}
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .srpBanner {
+        margin-top: 20px;
+    }
 }
 
 </style>
