@@ -5,9 +5,11 @@ import App from './App'
 import {routes} from './router'
 import VueRouter from 'vue-router'
 import VueFire from 'vuefire'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
 Vue.use(VueFire);
 Vue.use(VueRouter);
+Vue.use(VueYouTubeEmbed)
 
 const router = new VueRouter({
     routes,

@@ -1,159 +1,89 @@
 <template>
-    <div id="landing">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3>CONTACT</h3>
-                <!-- <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/275863914&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe> -->
-            </div>
-            <!-- <div class="panel-body">
-            <img src="../srp.jpg" alt="Smiley face">
-            </div>
-            <div class="panel-body">
-            <img src="../yellow.jpg" alt="Smiley face">
-            </div> -->
-                <!-- <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>
-                                email
-                            </th>
-                            <th>
-                                message
-                            </th>
-                            <th>
-                                name
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="contact in contacts">
-                            <td>
-                                {{contact.email}}
-                            </td>
-                            <td>
-                                {{contact.message}}
-                            </td>
-                            <td>
-                                {{contact.name}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table> -->    
-            
-            <div class="panel-body contactForm">
-                <form v-show="!submitted" id="form" class="form-inline" v-on:submit.prevent="addContact">
-                    <div class="form-group">
-                        <label for="contactName"></label>
-                        <input type="text" id="contactName" class="form-control" v-model="newContact.name" placeholder="name">
-                    </div>
-                    <div class="form-group">
-                        <label for="contactEmail"></label>
-                        <input type="text" id="contactEmail" class="form-control" v-model="newContact.email" placeholder="email@email.com">
-                    </div>
-                    <!-- <div class="form-group">
-                        <label for="contactMessage"></label>
-                        <textarea class="form-control" id="contactMessage" rows="3" placeholder="message" maxlength="280"></textarea>
-                    </div> -->
-                    <input type="submit" class="btn btn-primary" value="initiate">
-                </form>
-                <ul class="errors">
-                    <li v-show="!validation.name && !submitted">Name cannot be empty.</li>
-                    <li v-show="!validation.email && !submitted">Please provide a valid email address.</li>
-                    <li v-show="!!submitted" id="success">Your communication has been submitted.</li>
-                </ul>
-
-            </div>
-            <!-- <img src="../assets/spaceMan.jpg" class="img-fluid pic" alt="Responsive image"> -->
+    <div class="landing">
+        <div class="contactContain col-sm-12 col-lg-12 col-xl-12">
+            <h2 class="contactHeading francFont">FOR BOOKING CONTACT US AT</h2>
+            <a href="mailto:superrobotparty@gmail.com"><h4 class="contactFont francFontBlack"><span>superrobotparty@gmail.com</span></h4></a>
+            <h2 class="smMarginBottom contactHeading francFont">UPCOMING SHOWS</h2>
+            <div class="widget_iframe" style="display:inline-block;height:375px;margin:0;padding:0;border:0;"><iframe class="widget_iframe" src="https://www.reverbnation.com/widget_code/html_widget/artist_4311172?widget_id=52&pwc[design]=default&pwc[background_color]=%23333333&pwc[layout]=detailed&pwc[show_map]=0%2C1&pwc[size]=custom" width="100%" height="100%" frameborder="0" scrolling="no" ></iframe></div>
         </div>    
-        <!-- <img src="./assets/logo.png"> -->
-        <!-- <router-view></router-view> -->
     </div>
 </template>
 <script>
-// var SC = require('soundcloud');
-
-// SC.initialize({
-//   client_id: 'YOUR_CLIENT_ID',
-// });
-
-import Firebase from 'firebase'
-let config = {
-  apiKey: "AIzaSyB3f2NaIWLmStW14gtZ5daqu7q-NEwwrSw",
-  authDomain: "superrobotparty-3b4af.firebaseapp.com",
-  databaseURL: "https://superrobotparty-3b4af.firebaseio.com",
-  projectId: "superrobotparty-3b4af",
-  storageBucket: "superrobotparty-3b4af.appspot.com",
-  messagingSenderId: "124706582401"
-}
-
-let app = Firebase.initializeApp(config);
-let db = app.database();
-let contactsRef = db.ref('contacts');
-let emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-
 export default {
     name: 'app',
-    firebase: {
-        contacts: contactsRef
+    mounted() {
+        $('.c-hamburger').removeClass('is-active');
     },
-    data() {
-        return {
-            newContact: {
-                email: '',
-                message: '',
-                name: ''
-            },
-            submitted: false
-        }
-    },
-    // computed property for form validation state
-    computed: {
-        validation: function () {
-            return {
-                name: !!this.newContact.name.trim(),
-                email: emailRE.test(this.newContact.email)
-            }
-        },
-        isValid: function () {
-            var validation = this.validation
-            
-            return Object.keys(validation).every(function (key) {
-                return validation[key]
-            })
-        }
-    },
-    methods: {
-        addContact: function() {
-            if (this.isValid) {
-                contactsRef.push(this.newContact);
-                this.newContact.email = '',
-                this.newContact.message = '',
-                this.newContact.name = ''
-                this.submitted = true;
-            }
-        }
-    }
 }
 </script>
-
-<style scoped>
-.contactForm {
-    background-image:
-    linear-gradient(to bottom, rgba(255,255,0,0.5), rgba(0,0,255,0.5)),
-    url("../assets/spaceMan.jpg");
+<style lang="scss" scoped>
+.widget_iframe {
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+.contactFont {
+    margin-top: 1.5%;
+    flex: 1;
+    line-height: .75;
+    text-align: center;
 }
 
-ul {
-  padding: 0;
-  list-style: none;
+.contactFont > span:hover {
+    color: #1af0dc;
+    cursor: pointer;
 }
 
-.errors {
-  color: #f00;
+@media (min-width:1281px)
+  and (min-width:1025px) {
+    .contactContain {
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+    }
+
+    .widget_iframe {
+        width:500px;
+    }
+
+    .contactHeading {
+        margin-top: 7%;
+    }
 }
-.errors #success {
-    color: green;
+.contactContain {
+    background-color: pink;
 }
 
+.francFontBlack {
+    font-family: Francois One, sans-serif;
+    color: black;
+    text-shadow: 1px 1px grey;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .col-sm-12 {
+        margin: 35px auto 0;
+        padding-top: 15px;
+    }
+
+    .widget_iframe {
+       height: 430px;
+       width: 97%;
+       margin-right: .75%;
+       margin-left : .75%
+    }
+
+    .contactHeading {
+        margin-top: 12%;
+    }
+
+    .smMarginBottom {
+        margin-bottom: 0%;
+    }
+}
 </style>
+
