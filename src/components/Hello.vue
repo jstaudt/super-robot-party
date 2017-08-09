@@ -29,11 +29,11 @@
                 <a href="https://www.reverbnation.com/superrobotparty/" target="_blank"><i class="fa fa-4x fa-star" aria-hidden="true"></i></a>
             </div>
         </div>
-        <div v-show="!isMobile" class="showCase col-lg-12 col-xl-12">
-            <div style="vertical-align: middle;padding-top:25%;">
+        <div v-show="!isMobile" class="showCase col-sm-12 col-lg-12 col-xl-12">
+            <div style="vertical-align: middle;padding-top:25%;margin-bottom:4%;">
                 <h1 class="banner" data-text="SUPER ROBOT PARTY">SUPER ROBOT PARTY</h1>
             </div>
-            <div class="belowFoldCenter" v-bind:style="belowFoldCenterStyle">
+            <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-lg-6 col-lg-offset-3 col-xl-6 col-xl-offset-3" v-bind:style="belowFoldCenterStyle">
                 <div>
                     <h1 v-show="!submitted" class="francFont">GET UPDATES FROM THE BAND</h1>
                 </div>
@@ -48,14 +48,16 @@
                     <li v-show="!!submitted" id="success">THANKS!  SIGN UP SUCESSFUL.</li>
                 </ul>
             </div>
-            <div class="social landing">
-                <h2 class="francFont">SRP SOCIAL</h2>
-                <a href="https://soundcloud.com/super-robot-party" target="_blank"><i class="fa fa-4x fa-soundcloud" aria-hidden="true"></i></a>
-                <a href="https://www.facebook.com/superrobotparty" target="_blank"><i class="fa fa-4x fa-facebook-official" aria-hidden="true"></i></a>
-                <a href="https://twitter.com/superrobotparty" target="_blank"><i class="fa fa-4x fa-twitter" aria-hidden="true"></i></a>
-                <a href="https://www.instagram.com/superrobotparty/" target="_blank"><i class="fa fa-4x fa-instagram" aria-hidden="true"></i></a>
-                <a href="https://superrobotparty.bandcamp.com/" target="_blank"><i class="fa fa-4x fa-bandcamp" aria-hidden="true"></i></a>
-                <a href="https://www.reverbnation.com/superrobotparty/" target="_blank"><i class="fa fa-4x fa-star" aria-hidden="true"></i></a>
+            <div class="social landing ">
+                <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3">
+                    <h2 class="francFont">SRP SOCIAL</h2>
+                    <a href="https://soundcloud.com/super-robot-party" target="_blank"><i class="fa fa-4x fa-soundcloud" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/superrobotparty" target="_blank"><i class="fa fa-4x fa-facebook-official" aria-hidden="true"></i></a>
+                    <a href="https://twitter.com/superrobotparty" target="_blank"><i class="fa fa-4x fa-twitter" aria-hidden="true"></i></a>
+                    <a href="https://www.instagram.com/superrobotparty/" target="_blank"><i class="fa fa-4x fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://superrobotparty.bandcamp.com/" target="_blank"><i class="fa fa-4x fa-bandcamp" aria-hidden="true"></i></a>
+                    <a href="https://www.reverbnation.com/superrobotparty/" target="_blank"><i class="fa fa-4x fa-star" aria-hidden="true"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -123,9 +125,10 @@ export default {
         },
         belowFoldCenterStyle: function() {
             return {
-                'margin-top': 15 + 'px',
-                'margin-bottom': 10 + '%'
+                // 'margin-top': 15 + 'px',
+                // 'margin-bottom': 10 + '%'
                 // top: this.vp.height + 'px'
+                'overflow':'hidden'
             }
         }
     },
@@ -156,10 +159,16 @@ export default {
     background-size: cover;
     background-color: pink;
     padding-top: 15%;
-    padding-bottom: 15%;
+    padding-bottom: 25%;
 }
+
 a > i {
     color: #1af0dc;
+}
+
+a > i:hover {
+    color: black;
+    cursor: pointer;
 }
 .mobileForm > .btn {
     margin-bottom:2px;
@@ -168,7 +177,6 @@ a > i {
 .belowFoldCenter {
     left: 0px;
     right: 0px;
-    margin: 0 auto;
 }
 
 @media (min-width:1281px)
@@ -235,7 +243,6 @@ a > i {
     rgb(0,0,0) 
     radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%,rgba(0,0,0,0) 100%);
     background-repeat: repeat no-repeat;
-    background-attachment: fixed;
     background-size: 100% 170%;
     background-position: center bottom;
 }
@@ -258,6 +265,7 @@ a > i {
     font-family: Francois One, sans-serif;
     text-shadow: 2px 2px grey;
     font-size: large;
+    margin-top: 5%;
 }
 ul {
   padding: 0;
